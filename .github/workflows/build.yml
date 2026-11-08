@@ -12,6 +12,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with: { gradle-version: 8.7 }
       - name: Build APK (up to 3 tries)
+        working-directory: GameBoxAndroid
         run: |
           for i in 1 2 3; do
             gradle assembleDebug && exit 0
@@ -22,4 +23,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: GameBox-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: GameBoxAndroid/app/build/outputs/apk/debug/app-debug.apk
